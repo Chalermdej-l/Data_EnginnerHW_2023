@@ -1,0 +1,19 @@
+prefect deployment build ./etl_gcs_to_bq.py:parentflow -sb github/Chalermdej-l/Data_EnginnerHW_2023 -n 'homework_gcs_deploy'
+prefect deployment apply parentflow-deployment.yaml
+
+prefect agent start --work-queue "default"
+
+
+
+
+prefect deployment build ./etl_web_to_gcs.py:parentflow_github -sb github/homework-github -n 'homework_gcs_github'
+
+prefect deployment apply parentflow_github-deployment.yaml
+
+
+
+
+--
+prefect deployment build ./etl_web_to_gcstestcopy.py:parentsflow -n testflow
+
+prefect deployment apply parentsflow-deployment.yaml

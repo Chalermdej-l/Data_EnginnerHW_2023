@@ -1,0 +1,9 @@
+export GOOGLE_APPLICATION_CREDENTIALS="\Downloads\quantum-plasma-376313-eacb717a1eb4.json"
+
+export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
+
+terraform plan -var="project=quantum-plasma-376313"
+
+terraform apply -var="project=quantum-plasma-376313"
+
+ssh -i ~/.ssh/KEY_FILENAME test-terrform@34.143.244.205
