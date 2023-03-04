@@ -23,7 +23,7 @@ def createpath(df,color,dfile):
 
 @task()
 def writegcs(path,file):
-    gcs_block = GcsBucket.load("test-gcs-bigger124")
+    gcs_block = GcsBucket.load("gcs-dataengineer")
     gcs_block.upload_from_file_object(
     from_file_object = file,
     to_path = path
@@ -36,7 +36,7 @@ def etl_web_to_gcs(color,year,month):
     url_file = f'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz'
 
     df = fetch(url_file)
-    df = clean(df)
+    # df = clean(df)
     print(f'There are total of {len(df)} rows in the data.')
     path = createpath(df,color,df)
     writegcs(path,df) 
@@ -48,7 +48,7 @@ def parentflow_github(color='yellow',year=2019,month=3) -> None:
     return None
 
 if __name__ == "__main__":
-    color='yellow'
+    color='green'
     year='2019'
     month =3   
     parentflow_github(color,year,month)
